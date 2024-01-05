@@ -20,11 +20,6 @@ public class UserService {
     @Transactional(rollbackOn = Exception.class)
     public CustomReponse<BeanUser> findUserByUsername(String username) {
         BeanUser user = userRepository.findByUsername(username);
-
-        if(user == null){
-            return new CustomReponse<BeanUser>(user, "No se encontro el usuario", true, 404);
-        }
-
         return new CustomReponse<BeanUser>(user, "Usuario encontrado", false, 200);
     }
 

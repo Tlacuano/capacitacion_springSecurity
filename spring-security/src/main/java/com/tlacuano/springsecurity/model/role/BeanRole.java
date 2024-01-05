@@ -1,12 +1,15 @@
 package com.tlacuano.springsecurity.model.role;
 
 
+import com.fasterxml.jackson.annotation.*;
 import com.tlacuano.springsecurity.model.permission.BeanPermission;
+import com.tlacuano.springsecurity.model.roles_permissions.BeanRolesPermissions;
 import com.tlacuano.springsecurity.model.user.BeanUser;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,16 +24,13 @@ public class BeanRole {
     @Column(name = "name")
     private String name;
 
-    //many to many con permisos
-    @ManyToMany
-    @JoinTable(
-            name = "roles_permissions",
-            joinColumns = @JoinColumn(name = "id_role"),
-            inverseJoinColumns = @JoinColumn(name = "id_permission")
-    )
-    private Set<BeanPermission> permissions;
+    //one to many con roles_permissions
+    @OneToMany(mappedBy = "role")
+    private List<BeanRolesPermissions> rolesPermissions;
+
 
     //one to one con usuario
+    @JsonIgnore
     @OneToOne(mappedBy = "role")
     private BeanUser user;
 }

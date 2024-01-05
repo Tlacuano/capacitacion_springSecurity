@@ -1,5 +1,7 @@
 package com.tlacuano.springsecurity.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tlacuano.springsecurity.model.role.BeanRole;
 import jakarta.persistence.*;
 import lombok.Data;

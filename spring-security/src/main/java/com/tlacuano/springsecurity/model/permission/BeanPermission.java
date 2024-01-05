@@ -1,6 +1,7 @@
 package com.tlacuano.springsecurity.model.permission;
 
-import com.tlacuano.springsecurity.model.role.BeanRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tlacuano.springsecurity.model.roles_permissions.BeanRolesPermissions;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +20,9 @@ public class BeanPermission {
     @Column(name = "name")
     private String name;
 
-    //many to many con roles
-    @ManyToMany(mappedBy = "permissions")
-    private Set<BeanRole> roles;
+    //One to many con roles_permissions
+    @OneToMany(mappedBy = "permission")
+    @JsonIgnore
+    private Set<BeanRolesPermissions> rolesPermissions;
 
 }

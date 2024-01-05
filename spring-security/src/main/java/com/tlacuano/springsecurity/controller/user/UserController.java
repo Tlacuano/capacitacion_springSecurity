@@ -26,7 +26,11 @@ public class UserController {
     //find by id
     @PostMapping("/findUserByUsername")
     public ResponseEntity<CustomReponse<BeanUser>> findUserByUsername(@RequestBody BeanUser user) {
-        return new ResponseEntity<>(service.findUserByUsername(user.getUsername()), HttpStatus.OK);
+        CustomReponse<BeanUser> respuesta = service.findUserByUsername(user.getUsername());
+
+
+
+        return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
     //find all
