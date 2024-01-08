@@ -33,22 +33,4 @@ public class PermissionController {
         return ResponseEntity.ok(service.findAllPermissions());
     }
 
-    //save
-    @PostMapping("/savePermission")
-    public ResponseEntity<CustomReponse<BeanPermission>> savePermission(@RequestBody BeanPermission permission) {
-        return ResponseEntity.ok(service.savePermission(permission));
-    }
-
-    //delete
-    @PostMapping("/deletePermissionById")
-    public ResponseEntity<CustomReponse<String>> deletePermissionById(@RequestBody Long id) {
-        return ResponseEntity.ok(service.deletePermissionById(id));
-    }
-
-    //update
-    @PostMapping("/updatePermission")
-    public ResponseEntity<CustomReponse<BeanPermission>> updatePermission(@RequestBody BeanPermission permission) {
-        return ResponseEntity.ok(service.updatePermission(permission));
-    }
-
 }

@@ -2,6 +2,7 @@ package com.tlacuano.springsecurity.service.role;
 
 import com.tlacuano.springsecurity.model.role.BeanRole;
 import com.tlacuano.springsecurity.model.role.RoleRepository;
+import com.tlacuano.springsecurity.model.user.BeanUser;
 import com.tlacuano.springsecurity.utils.CustomReponse;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,14 @@ public class RoleService {
     public CustomReponse<BeanRole> updateRole(BeanRole role) {
         BeanRole roleUpdated = roleRepository.saveAndFlush(role);
         return new CustomReponse<BeanRole>(roleUpdated,"Rol actualizado", false, 200);
+    }
+
+    //set role to user
+    @Transactional(rollbackOn = Exception.class)
+    public CustomReponse<BeanUser> setRolesToUser (Long iiUser, Long idRole){
+
+
+
+        return null;
     }
 }

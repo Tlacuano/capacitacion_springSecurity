@@ -1,6 +1,5 @@
 package com.tlacuano.springsecurity.controller.user;
 
-import com.tlacuano.springsecurity.controller.user.dtos.RequestSaveUser;
 import com.tlacuano.springsecurity.model.user.BeanUser;
 import com.tlacuano.springsecurity.service.user.UserService;
 import com.tlacuano.springsecurity.utils.CustomReponse;
@@ -38,8 +37,10 @@ public class UserController {
 
     //save
     @PostMapping("/saveUser")
-    public ResponseEntity<CustomReponse<BeanUser>> saveUser(@RequestBody RequestSaveUser requestSaveUser) {
-        BeanUser user = requestSaveUser.getUser();
+    public ResponseEntity<CustomReponse<BeanUser>> saveUser(@RequestBody BeanUser user) {
+
+        System.out.println(user.getRoles().get(0).getId());
+
         return new ResponseEntity<>(service.saveUser(user), HttpStatus.OK);
     }
 

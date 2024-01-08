@@ -39,29 +39,5 @@ public class PermissionService {
         return new CustomReponse<List<BeanPermission>>(permissions, "Permisos encontrados", false, 200);
     }
 
-    //save
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<BeanPermission> savePermission(BeanPermission permission) {
-        BeanPermission permissionSaved = permissionRepository.saveAndFlush(permission);
 
-        if(permissionSaved == null){
-            return new CustomReponse<BeanPermission>(permissionSaved, "No se pudo guardar el permiso", true, 400);
-        }
-
-        return new CustomReponse<BeanPermission>(permissionSaved, "Permiso guardado", false, 200);
-    }
-
-    //delete
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<String> deletePermissionById(Long id) {
-        permissionRepository.deleteById(id);
-        return new CustomReponse<String>(null,"Permiso eliminado", false, 200);
-    }
-
-    //update
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<BeanPermission> updatePermission(BeanPermission permission) {
-        BeanPermission permissionUpdated = permissionRepository.saveAndFlush(permission);
-        return new CustomReponse<BeanPermission>(permissionUpdated, "Permiso actualizado", false, 200);
-    }
 }
