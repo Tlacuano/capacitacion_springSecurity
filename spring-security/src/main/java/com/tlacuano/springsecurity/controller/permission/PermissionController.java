@@ -51,24 +51,4 @@ public class PermissionController {
         return ResponseEntity.ok(service.updatePermission(permission));
     }
 
-    //tabla intermedia
-    //find all by role id
-    @PostMapping("/findAllPermissionsByRoleId")
-    public ResponseEntity<CustomReponse<List<BeanPermission>>> findAllPermissionsByRoleId(@RequestBody Long id) {
-        return ResponseEntity.ok(service.findRolePermission(id));
-    }
-
-    //save permission by role id
-    @PostMapping("/addPermissionToRole")
-    public ResponseEntity<CustomReponse<BeanPermission>> addPermissionToRole(@RequestBody RequestIdsPermissionToRole requestIdsPermissionToRole) {
-        return ResponseEntity.ok(service.addPermissionToRole(requestIdsPermissionToRole.getIdRole(), requestIdsPermissionToRole.getIdPermission()));
-    }
-
-    //delete permission by role id
-    @PostMapping("/deletePermissionToRole")
-    public ResponseEntity<CustomReponse<BeanPermission>> deletePermissionToRole(@RequestBody RequestIdsPermissionToRole requestIdsPermissionToRole) {
-        return ResponseEntity.ok(service.deleteRolePermission(requestIdsPermissionToRole.getIdRole(), requestIdsPermissionToRole.getIdPermission()));
-    }
-
-
 }

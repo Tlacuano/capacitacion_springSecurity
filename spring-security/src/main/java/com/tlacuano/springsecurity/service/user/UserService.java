@@ -65,4 +65,15 @@ public class UserService {
 
         return new CustomReponse<BeanUser>(userUpdated, "Usuario actualizado", false, 200);
     }
+
+    //register roles to user by id Role
+    @Transactional(rollbackOn = Exception.class)
+    public CustomReponse<BeanUser> registerRolesToUserByIdRole(Long idUser, Long idRole) {
+
+        
+
+
+        return null;
+    }
+
 }

@@ -64,31 +64,4 @@ public class PermissionService {
         BeanPermission permissionUpdated = permissionRepository.saveAndFlush(permission);
         return new CustomReponse<BeanPermission>(permissionUpdated, "Permiso actualizado", false, 200);
     }
-
-    /*TABLA ROLES_PERMISSIONS*/
-    //add permission to role
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<BeanPermission> addPermissionToRole(Long idRole, Long idPermission) {
-       permissionRepository.saveRolePermission(idRole, idPermission);
-         return new CustomReponse<BeanPermission>(null, "Permiso agregado al rol", false, 200);
-    }
-
-    //traer todos los permisos de un rol
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<List<BeanPermission>> findRolePermission(Long idRole) {
-        List<BeanPermission> permissions = permissionRepository.findRolePermission(idRole);
-
-        if(permissions == null){
-            return new CustomReponse<List<BeanPermission>>(permissions, "No se encontraron permisos", false, 200);
-        }
-
-        return new CustomReponse<List<BeanPermission>>(permissions, "Permisos encontrados", false, 200);
-    }
-
-    //eliminar un permiso de un rol
-    @Transactional(rollbackOn = Exception.class)
-    public CustomReponse<BeanPermission> deleteRolePermission(Long idRole, Long idPermission) {
-        permissionRepository.deleteRolePermission(idRole, idPermission);
-        return new CustomReponse<BeanPermission>(null,"Permiso eliminado del rol", false, 200);
-    }
 }

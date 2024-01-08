@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RequestSaveUser {
     private BeanUser user;
-    private BeanRole role;
+    private int idRoles[];
 }

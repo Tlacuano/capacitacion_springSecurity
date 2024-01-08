@@ -23,13 +23,10 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    //find by id
+    //find by username
     @PostMapping("/findUserByUsername")
     public ResponseEntity<CustomReponse<BeanUser>> findUserByUsername(@RequestBody BeanUser user) {
         CustomReponse<BeanUser> respuesta = service.findUserByUsername(user.getUsername());
-
-
-
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 
@@ -43,8 +40,6 @@ public class UserController {
     @PostMapping("/saveUser")
     public ResponseEntity<CustomReponse<BeanUser>> saveUser(@RequestBody RequestSaveUser requestSaveUser) {
         BeanUser user = requestSaveUser.getUser();
-        user.setRole(requestSaveUser.getRole());
-
         return new ResponseEntity<>(service.saveUser(user), HttpStatus.OK);
     }
 

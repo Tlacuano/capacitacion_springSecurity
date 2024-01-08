@@ -1,11 +1,16 @@
 package com.tlacuano.springsecurity.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.tlacuano.springsecurity.model.role.BeanRole;
+import com.tlacuano.springsecurity.model.user_roles.BeanUserRoles;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -23,8 +28,7 @@ public class BeanUser {
     private String password;
 
     //one to one con rol
-    @OneToOne
-    @JoinColumn(name = "id_role")
-    private BeanRole role;
+    @OneToMany(mappedBy = "user")
+    private List<BeanUserRoles> roles;
 
 }
